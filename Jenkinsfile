@@ -11,7 +11,10 @@ pipeline {
       parallel {
         stage('Unit') {
           steps {
-            sh 'dotnet test tests/UnitTests'
+            warnError(message: 'Instable') {
+              sh 'dotnet test tests/UnitTests'
+            }
+
           }
         }
 
